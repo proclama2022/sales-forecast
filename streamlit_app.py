@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+import numpy as np
+np.float_ = np.float64
 import matplotlib.pyplot as plt
 import plotly
 from prophet import Prophet
