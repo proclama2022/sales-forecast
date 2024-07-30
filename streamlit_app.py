@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import plotly
 from prophet import Prophet
 from io import BytesIO
 from sklearn.metrics import r2_score, mean_absolute_percentage_error, mean_squared_error
