@@ -97,7 +97,9 @@ if uploaded_file is not None:
     # Selezione della metrica per l'intervallo di confidenza
     confidence_metric = st.selectbox(
         "Seleziona la metrica per l'intervallo di confidenza",
-        ["MAPE", "RMSE"]
+        ["MAPE", "RMSE"], help="""
+        - MAPE (Mean Absolute Percentage Error): Misura la dimensione dell'errore in termini percentuali. Un valore più basso indica una previsione migliore.
+        - RMSE (Root Mean Square Error): Rappresenta la deviazione standard dei residui (errori di previsione). Un valore più basso indica una previsione migliore."""
     )
 
     if st.button("Genera previsione"):
@@ -111,7 +113,7 @@ if uploaded_file is not None:
 
         # Crea una tabella con le previsioni per tutti gli articoli
         st.subheader("Previsioni per tutti gli articoli")
-        forecast_table = pd.DataFrame(columns=['Articolo'] + [f'Previsione t{i+1}' for i in range(forecast_periods)])
+        forecast_table = pd.DataFrame(columns=['Articolo'] + [f'Previsione Periodo {i+1}' for i in range(forecast_periods)])
         for article, forecast in forecasts.items():
             row = [article] + list(forecast['yhat'].tail(forecast_periods))
             forecast_table.loc[len(forecast_table)] = row
